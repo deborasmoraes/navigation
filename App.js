@@ -1,20 +1,47 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { NavigationContainer } from "@react-navigation/native";
+import { createNativeStackNavigator } from '@react-navigation/native-stack'
+import {StyleSheet} from 'react-native'
+import Home from './src/components/home';
+import Cadastro from './src/components/cadastro';
+import Consulta from "./src/components/consulta";
+import Edicao from "./src/components/edicao"
+
+const Stack = createNativeStackNavigator();
+
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+        <NavigationContainer >
+          <Stack.Navigator>
+            <Stack.Screen 
+            name="home"
+            component={Home}
+            options={{ title: 'Bem vindos a Summoners Drift' }}
+
+            />
+            <Stack.Screen
+            name= "cadastro"
+            component={Cadastro} 
+            />
+            <Stack.Screen 
+            name = "consulta"
+            component={Consulta}
+            />
+             <Stack.Screen 
+            name = "edicao"
+            component={Edicao}
+            />
+          </Stack.Navigator>
+        </NavigationContainer>
+    
   );
 }
 
+
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+  container:{
+      backgroundColor: 'lightcyan',
+      alignItems: 'center',
+      justifyContent: 'center',
   },
-});
+ })
